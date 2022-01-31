@@ -1,0 +1,27 @@
+---
+name: Protobuf
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  protobuf-check-generated:
+    runs-on:
+    - ubuntu-20.04
+
+    steps:
+    - name: Just Sleep
+      run: |
+        sleep $((33 + $RANDOM%7))
+
+  lint-protobuf:
+    runs-on:
+    - ubuntu-20.04
+
+    steps:
+    - name: Just Sleep
+      # 57s
+      run: |
+        sleep $((19 + $RANDOM%7))

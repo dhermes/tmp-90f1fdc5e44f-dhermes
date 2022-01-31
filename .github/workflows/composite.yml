@@ -1,0 +1,23 @@
+---
+name: 'Meta Workflow: Composite'
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  composite:
+    runs-on:
+    - ubuntu-20.04
+
+    steps:
+    - name: Ensure All Conditional Checks Have Passed
+      uses: blend/action-composite@2022.01.21
+      with:
+        interval: 20s
+        checks-yaml: |
+          - job: unit-test-go-core
+          - job: lint-go
+          - job: protobuf-check-generated
+          - job: lint-protobuf
