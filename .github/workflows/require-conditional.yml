@@ -1,5 +1,5 @@
 ---
-name: 'Meta Workflow: Composite'
+name: 'Meta Workflow: Require Conditional Status Checks'
 
 on:
   pull_request:
@@ -7,13 +7,13 @@ on:
     - main
 
 jobs:
-  composite:
+  require-conditional:
     runs-on:
     - ubuntu-20.04
 
     steps:
     - name: Ensure All Conditional Checks Have Passed
-      uses: blend/action-composite@2022.01.21
+      uses: blend/require-conditional-status-checks@2022.02.04
       with:
         interval: 20s
         checks-yaml: |
