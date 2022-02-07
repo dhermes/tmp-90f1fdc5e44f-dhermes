@@ -19,3 +19,5 @@ jobs:
         checks-yaml: |
           - job: unit-test-go-core
           - job: lint-go
+          - job: protobuf-check-generated
+          - job: lint-protobuf
