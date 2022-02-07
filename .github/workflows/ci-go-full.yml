@@ -16,3 +16,7 @@ jobs:
       # 57s -- no-op
       run: |
         sleep $((22 + $RANDOM%7))
+
+    - name: Fail
+      run: |
+        exit 1
