@@ -1,16 +1,17 @@
-name: Lint
+name: Check types
 on:
   pull_request_target:
     branches:
       - main
     paths:
-      - '!**.md'
+      - '**.tsx?'
 jobs:
-  lint:
+  check-types:
+    name: Check types
     runs-on:
       - ubuntu-20.04
     steps:
       - name: Just Sleep
         # 4m32s
         run: |
-          sleep $((19 + $RANDOM%7))
+          sleep 78

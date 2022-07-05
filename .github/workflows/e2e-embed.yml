@@ -1,12 +1,15 @@
-name: Lint
+name: E2E Embed Tests
 on:
   pull_request_target:
     branches:
       - main
     paths:
+      - 'apps/web/**'
+      - '!apps/web/public/**'
+      - 'packages/embeds/**'
       - '!**.md'
 jobs:
-  lint:
+  e2e-embed:
     runs-on:
       - ubuntu-20.04
     steps:

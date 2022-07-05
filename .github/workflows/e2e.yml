@@ -1,12 +1,13 @@
-name: Lint
+name: E2E Tests
 on:
   pull_request_target:
     branches:
       - main
     paths:
+      - '!apps/web/public/static/locales/**'
       - '!**.md'
 jobs:
-  lint:
+  e2e:
     runs-on:
       - ubuntu-20.04
     steps:

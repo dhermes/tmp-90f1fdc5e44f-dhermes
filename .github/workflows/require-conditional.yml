@@ -1,26 +1,35 @@
----
-name: 'Meta Workflow: Require Conditional Status Checks'
-
+name: "Meta Workflow: Require Conditional Status Checks"
 on:
   pull_request:
     branches:
-    - main
-
+      - main
 jobs:
-  require-conditional:
-    runs-on:
-    - ubuntu-20.04
-
+  required-checks:
+    strategy:
+      matrix:
+        node: ["16.x"]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     steps:
-    - name: Ensure All Conditional Checks Have Passed
-      uses: blend/require-conditional-status-checks@2022.02.04
-      with:
-        interval: 20s
-        checks-yaml: |
-          - job: unit-test-go-core
-          - job: lint-go
-            paths:
-            - '!packages/**'
-          - job: lint
-            paths:
-            - packages/**
+      - name: Ensure All Conditional Checks Have Passed
+        uses: blend/require-conditional-status-checks@2022.02.04
+        with:
+          interval: 20s
+          checks-yaml: |
+            - job: lint
+              paths:
+                - '!**.md'
+            - job: check-types
+              paths:
+                - '**.tsx?'
+            - job: e2e
+              paths:
+                - '!apps/web/public/static/locales/**'
+                - '!**.md'
+            - job: e2e-embed
+              paths:
+                - 'apps/web/**'
+                - '!apps/web/public/**'
+                - 'packages/embeds/**'
+                - '!**.md'
