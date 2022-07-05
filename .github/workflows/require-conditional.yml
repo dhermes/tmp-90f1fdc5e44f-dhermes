@@ -19,6 +19,8 @@ jobs:
         checks-yaml: |
           - job: unit-test-go-core
           - job: lint-go
+            paths:
+            - !packages/**
           - job: lint
             paths:
             - packages/**
