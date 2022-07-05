@@ -20,7 +20,7 @@ jobs:
           - job: unit-test-go-core
           - job: lint-go
             paths:
-            - !packages/**
+            - '!packages/**'
           - job: lint
             paths:
             - packages/**
