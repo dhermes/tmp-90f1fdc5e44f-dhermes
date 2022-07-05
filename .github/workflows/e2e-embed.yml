@@ -1,6 +1,6 @@
 name: E2E Embed Tests
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
     paths:
